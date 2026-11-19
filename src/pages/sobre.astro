@@ -1,60 +1,36 @@
-<html lang="pt-BR">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Sobre Nós | Nexora Tech</title>
-	</head>
-	<body>
-		<header>
-			<strong>Nexora Tech</strong>
-			<nav>
-				<ul>
-					<li><a href="/">Início</a></li>
-					<li><a href="/sobre">Sobre</a></li>
-					<li><a href="/equipe">Equipe</a></li>
-					<li><a href="/contato">Contato</a></li>
-				</ul>
-			</nav>
-		</header>
+---
+import LayoutBase from '../layouts/LayoutBase.astro';
+import { empresa } from '../data/empresa.js';
+---
 
-		<main>
-			<section>
-				<h1>Sobre a Nexora Tech</h1>
-				<p>A Nexora Tech surgiu da ideia de transformar tecnologia em soluções simples, eficientes e acessíveis para empresas e pessoas. Criada por jovens apaixonados por inovação e desenvolvimento de software, a empresa começou com o objetivo de desenvolver sistemas personalizados que facilitassem tarefas, organizassem processos e ajudassem seus clientes a crescer.</p>
-			</section>
+<LayoutBase 
+	titulo="Sobre Nós" 
+	descricao={`Conheça a história e os valores da ${empresa.nome}.`}
+>
+	<section>
+		<h1>Sobre a {empresa.nome}</h1>
+		<p>{empresa.historia}</p>
+	</section>
 
-			<section>
-				<h2>Missão</h2>
-				<p>Desenvolver soluções tecnológicas inovadoras e personalizadas que facilitem processos, resolvam problemas e contribuam para o crescimento de nossos clientes.</p>
-			</section>
+	<section>
+		<h2>Missão</h2>
+		<p>{empresa.missao}</p>
+	</section>
 
-			<section>
-				<h2>Visão</h2>
-				<p>Ser uma Software House reconhecida pela qualidade, inovação e criatividade no desenvolvimento de soluções digitais.</p>
-			</section>
+	<section>
+		<h2>Visão</h2>
+		<p>{empresa.visao}</p>
+	</section>
 
-			<section>
-				<h2>Nossos Valores</h2>
-				<ul>
-					<li>
-						<h3>Inovação</h3>
-						<p>buscar novas ideias e tecnologias para melhorar nossas soluções.</p>
-					</li>
-					<li>
-						<h3>Transparência e parceria</h3>
-						<p>Comunicação clara e honesta, tratando cada cliente como um parceiro de longo prazo.</p>
-					</li>
-					<li>
-						<h3>Inovação responsável</h3>
-						<p>Adoção de novas tecnologias com foco em segurança, sustentabilidade e resultados reais.</p>
-					</li>
-				</ul>
-			</section>
-		</main>
-
-		<footer>
-			<p>&copy; 2026 Nexora . Todos os direitos reservados.</p>
-		</footer>
-	</body>
-</html>
+	<section>
+		<h2>Nossos Valores</h2>
+		<ul>
+			{empresa.valores.map((valor) => (
+				<li>
+					<h3>{valor.titulo}</h3>
+					<p>{valor.descricao}</p>
+				</li>
+			))}
+		</ul>
+	</section>
+</LayoutBase>
